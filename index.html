@@ -1,1 +1,104 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patna Business Hub</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#172554}
+header{background:#10265c;color:white;padding:22px 16px;text-align:center}
+header h1{margin:0;font-size:27px}
+header p{margin:9px 0 0;color:#dbeafe}
+.hero{padding:30px 16px;text-align:center;background:linear-gradient(135deg,#dbeafe,#fff7ed)}
+.hero h2{font-size:27px;margin:5px 0 12px}
+.hero p{color:#475569}
+.search{width:100%;max-width:500px;padding:14px;border:1px solid #cbd5e1;border-radius:10px;font-size:16px;margin-top:12px}
+.categories{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;padding:18px 10px}
+.categories button{padding:10px 14px;border:0;border-radius:20px;background:#dbeafe;color:#173779;font-weight:bold}
+.categories button.active{background:#173779;color:white}
+main{max-width:1000px;margin:auto;padding:10px 16px 35px}
+.section-title{font-size:22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.card{background:white;border:1px solid #e2e8f0;border-radius:14px;padding:18px;box-shadow:0 3px 12px #0f172a0c}
+.icon{font-size:35px}
+.card h3{margin:12px 0 8px}
+.tag{display:inline-block;background:#dcfce7;color:#166534;padding:5px 9px;border-radius:12px;font-size:12px}
+.card p{color:#64748b;line-height:1.5}
+.card a{display:inline-block;background:#173779;color:white;text-decoration:none;padding:10px 14px;border-radius:8px;margin-top:5px}
+.note{background:#fff7ed;border-radius:10px;padding:14px;margin-top:24px;color:#7c2d12}
+footer{text-align:center;padding:22px;background:#10265c;color:white}
+</style>
+</head>
+<body>
+<header>
+<h1>🏙️ Patna Business Hub</h1>
+<p>Discover Local. Shop Local. Grow Local.</p>
+</header><section class="hero">
+<h2>Find Businesses in Patna</h2>
+<p>Discover local shops, restaurants, coaching centres and services.</p>
+<input id="search" class="search" type="search" placeholder="Search businesses or categories..." oninput="filterCards()">
+</section><nav class="categories">
+<button class="active" onclick="setCategory('All',this)">All</button>
+<button onclick="setCategory('Restaurant',this)">🍔 Restaurants</button>
+<button onclick="setCategory('Shop',this)">🛍️ Shops</button>
+<button onclick="setCategory('Education',this)">🎓 Education</button>
+<button onclick="setCategory('Legal',this)">⚖️ Legal</button>
+<button onclick="setCategory('Service',this)">🔧 Services</button>
+</nav><main>
+<h2 class="section-title">Explore Local Businesses</h2>
+<div class="grid" id="businesses"><article class="card" data-category="Restaurant">
+<div class="icon">🍽️</div>
+<span class="tag">Restaurant</span>
+<h3>Restaurant Listing</h3>
+<p>Restaurant details and menu information can be added here.</p>
+<a href="mailto:YOUR_EMAIL@example.com?subject=Restaurant%20Enquiry">Enquire</a>
+</article><article class="card" data-category="Shop">
+<div class="icon">🛍️</div>
+<span class="tag">Shopping</span>
+<h3>Local Shop Listing</h3>
+<p>Shop details, product categories and opening hours can be added here.</p>
+<a href="mailto:YOUR_EMAIL@example.com?subject=Shop%20Enquiry">Enquire</a>
+</article><article class="card" data-category="Education">
+<div class="icon">🎓</div>
+<span class="tag">Education</span>
+<h3>Coaching Centre Listing</h3>
+<p>Course details, address and contact information can be added here.</p>
+<a href="mailto:YOUR_EMAIL@example.com?subject=Coaching%20Enquiry">Enquire</a>
+</article><article class="card" data-category="Legal">
+<div class="icon">⚖️</div>
+<span class="tag">Legal Services</span>
+<h3>Lawyer Listing</h3>
+<p>Professional details and office contact information can be added here.</p>
+<a href="mailto:YOUR_EMAIL@example.com?subject=Legal%20Enquiry">Enquire</a>
+</article><article class="card" data-category="Service">
+<div class="icon">🔧</div>
+<span class="tag">Local Services</span>
+<h3>Service Provider Listing</h3>
+<p>Service details, service area and contact information can be added here.</p>
+<a href="mailto:YOUR_EMAIL@example.com?subject=Service%20Enquiry">Enquire</a>
+</article></div>
+<div class="note"><strong>Business owners:</strong> Want to list your business? Contact us to learn about listing options.</div>
+</main><footer>
+<p>© 2026 Patna Business Hub</p>
+<p>Discover Local. Shop Local. Grow Local.</p>
+</footer><script>
+let selectedCategory='All';
+function filterCards(){
+ const query=document.getElementById('search').value.toLowerCase();
+ document.querySelectorAll('.card').forEach(card=>{
+  const matchesText=card.innerText.toLowerCase().includes(query);
+  const matchesCategory=selectedCategory==='All'||card.dataset.category===selectedCategory;
+  card.style.display=matchesText&&matchesCategory?'block':'none';
+ });
+}
+function setCategory(category,button){
+ selectedCategory=category;
+ document.querySelectorAll('.categories button').forEach(b=>b.classList.remove('active'));
+ button.classList.add('active');
+ filterCards();
+}
+</script></body>
+</html>
+
+
 
